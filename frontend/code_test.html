@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Sender</title>
+</head>
+<body>
+    <h1>Java Code Sender</h1>
+    <textarea id="javaCode" rows="10" cols="50" placeholder="Enter your Java code here..."></textarea><br>
+    <button id="sendButton">Send Code</button>
+    <h2>Received Code:</h2>
+    <pre id="receivedCode"></pre>
+    <h2>Execution Time (s):</h2>
+    <pre id="executionTime"></pre>
+    <h2>Memory Usage (MB):</h2>
+    <pre id="memoryUsage"></pre>
+    <h2>Carbon Emissions (kg CO2e):</h2>
+    <pre id="carbonEmissions"></pre>
+    <h2>Output:</h2>
+    <pre id="output"></pre>
+
+    <script>
+        document.getElementById('sendButton').addEventListener('click', async () => {
+            const javaCode = document.getElementById('javaCode').value;
+            
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ java_code: javaCode })
+            });
+
+            const result = await response.json();
+            document.getElementById('receivedCode').textContent = result.java_code;
+            document.getElementById('executionTime').textContent = result.execution_time;
+            document.getElementById('memoryUsage').textContent = result.memory_usage;
+            document.getElementById('carbonEmissions').textContent = result.carbon_emissions;
+            document.getElementById('output').textContent = result.output;
+        });
+    </script>
+</body>
+</html>
