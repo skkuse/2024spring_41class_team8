@@ -1,0 +1,169 @@
+ <!DOCTYPE html>
+ 
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="width=device-width, initial-scale=1.0" charset="UTF-8"> 
+        <title>Eco Master 커뮤니티</title>
+        <style>
+            /* CSS Reset 예시 */
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body{ font-family: Arial, sans-serif;    width:100%; height:100%;    margin:0px;    overflow-x:hidden; background-color: #ffffff;}
+            article, header, nav, section, div{ display: block;}
+            body, button, input, table{     font-size: 12px;}
+            .head_logo{margin:0;    margin-bottom:3px;}
+            .head_logo_wrap{ border-bottom:4px solid #83acaf; margin-bottom: 0;height:150px;padding:10px ; padding-top:0; padding-bottom:0;   background-color:#c8e2df ; padding-left:10%; font-size: 30px; display:flex;padding-left:15%;}
+            .head_logo_box{ margin-top:30px; display:inline-block; margin-left:30px;}
+            #icon{margin-top:15px;    display:inline-block;}
+            #icon-1{margin-top:15px;  padding-top:15px; display:inline-block;}
+            .navigation{  margin-top:0; min-width:1200px;    background-color: #c8e2df;  padding-left: 15%;  position:relative;height: 45px;}
+            .navbar{    width:auto;    height: auto;}
+            .nav-list{    width:800px;    height: fit-content;    background:transparent;    list-style:none;   display:block;}
+            a{    text-decoration:none;}
+            .nav-link{    color: rgb(68, 134, 119);    font-size:14px;    font-weight: bold;    line-height: 40px;}
+            .nav-item{    display: list-item;    position:relative;    float:left;    margin-right: 50px;  margin-left:5px;   padding: 0;    border: 0; }
+            .wrap-inner{ width:100%;  display:flex; flex-direction: column; align-items: center; justify-content: center;} 
+            .content-section{width:70%;  background: #fff; display:block; margin: auto;margin-top:30px;}
+            .content-options{  width: 100%;  display: table;    margin:15px;  border-bottom: 3px solid #5b7772;}
+            .right-box{    position: relative;    z-index: 1;    float:right;    min-width:80px;    height:30px;    width: max-content;    vertical-align: top;    padding-top : 5px;    margin:0;    border:0;}
+            #btn_write{    width:66px;    height:30px;    box-sizing: border-box;    padding: 0px 6px;  font-weight: bold;    font-size: 12px;    line-height: 19px;    vertical-align: top;
+                text-align: center;    background-color: #d3e2e1;    display: inline-block; border-radius:5px; border:none; text-decoration: none;}
+            .write-head{    font-size : 15px;}
+            .content-list-wrap{ width:100%; position: relative;    margin:15px;    padding: 0;  border: 0;    border-top: 1px solid #a3b7b3;    vertical-align: baseline;    font-style: normal;    font-size: 12px;}
+            .content-list{ border-collapse:collapse; width:100%;  background-color: #fbfffb;  border-bottom: 3px solid #5b7772;    border-collapse: collapse;    border-spacing: 0;    table-layout: fixed;    margin: 0;    padding: 0;    vertical-align: baseline;    display: table;}
+            thead{    margin:0;    padding: 0;    border: 0;    vertical-align: baseline;    font-style: normal;}
+            tr{    display: table-row;}
+            th{    display: table-cell;    font-weight: bold;   margin: 0;    border: 0;    padding:0; padding-top: 10px; height: 30px;}
+            #list{    display: table-row-group;    margin: 0;  padding: 0;    border: 0;    vertical-align: baseline;    font-style: normal;}
+            .content{    display: table-row;    width: 100%;}
+            td{    padding-top:1px;    height:30px;    border-top:1px solid #bbb;    vertical-align: middle;    text-align: center;    color:#333;    display: table-cell;}
+            .listbottom_box{    margin-top:15px;    padding:0;    border:0;    margin-right:15px;   display: block; width:100%; margin-bottom:100px;}
+            .listbottom_box:after{    clear: both;    display: block;    visibility: hidden;    content: "";}
+            .writebottom_box{    float: right;}
+            .bottom-paging-wrap{    display: inline-block;    margin-left: 45%;    margin-bottom: 15px;    width: 100%;    margin-top: 5px;    position: relative;    padding: 0 100px;    box-sizing: border-box;}
+            em{    padding-top:6px;    color: #d31900;    text-decoration: underline;    font-size: 14px;    font-weight: bold;    display: inline-block;}
+            .paging-list-num{    padding-top:6px;    display: inline-block;    margin-left: 9px;    font-size: 14px;    font-weight: bold;    color: #333;    text-decoration: none;}
+            form{    display: block;    font-size: 12px;    margin: 0;    padding: 0;    border: 0;    font-style: normal;}
+            .search_wrap{    margin-left: 30%;   position: relative;    height: fit-content;    display: flex;    width: 700px;    padding: 0;}
+            .search_select_box{    width: 100px;    height: 35px;    border: 1px solid #b2db71;    position: relative;    display: inline-block;}
+            select{    width:100%;    height: 100%;    border:0;    border-radius: 0;    vertical-align: middle;    font-size: 12px;    text-rendering: auto;    letter-spacing: normal;    text-align: start;}
+            .search_input_box{    width: 450px;    height: 35px;    margin-left: 5px;    border: 1px solid #333;    display: inline-block;}
+            .search_input{    margin: 3px 0 0 3px;    width: 300px;    float: left;    background: #fff;    padding: 0;}
+            .input_word{    width: 300px;    height: 30px;    padding: 0 9px;    border: none;    color: #333;    font-size: 14px;    font-weight: bold;    vertical-align: middle;}
+            input[type="text" i] {    padding-block: 1px;    padding-inline: 2px;}
+            .search_btn{    width: 40px;    height: 35px;    float: right;    background-color: #fff;    border: 1px solid #d5e4bc;}
+            .button-category-container { display: flex; justify-content: space-between;  margin-left : 5px; margin-bottom: 10px; padding:auto; }
+            .button-container { display: flex; gap: 10px; }
+            .category-container {display: flex; gap: 10px; font-size: 16px; margin-right:auto; padding-left:20px; padding-top:5px;}
+            .category-container span {padding-top: 10px;  cursor: pointer;}
+            .category-container span:hover {  text-decoration: underline;}
+            .post-list-button{padding-top:7px; padding-left:14px; padding-right:14px; padding-bottom: 8px; border:none; font-size:15px; height: 40px; cursor:pointer;
+            border-radius:10px; background-color: #d3e2e1;}
+            .center{text-align:center;}
+            .footer{background-color: #5b7772 ; height:250px; width:100%; align-items:center;display:flex;}
+            #footer-team{margin-top:30px;margin-left: 15%;width:20%;font-size: 15px; color:#d6d6d6; font-style:italic;}
+        </style>
+    
+    </head>
+    <body>
+        <header class="head">
+            <div class="head_logo_wrap">
+                <div id="icon"> <img src="/html_template/Preview.png" width="200px" height="120px"></div>
+                
+            </div>
+        </header>
+        <div class="navigation">
+            <nav class="navbar"> 
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="/" style="cursor:pointer;">Code</a></li>
+                    <li class="nav-item"><a class="nav-link" style="cursor:pointer;" href="/quiz">Green Quiz</a></li>    
+                    <li class="nav-item"><a class="nav-link" id="community-link" style="cursor:pointer" href='/community'>Community</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="wrap_inner">
+            <section class="content-section">
+                <article>
+                    <div class="content-options">
+                        <div class="button-category-container">
+                            <div id="icon" style="margin-top:0; margin-right:15px;"> <img src="/html_template/denkyuu_eco.png" width="40px" height="40px"></div>
+                            <div class="button-container">
+                                <button class="post-list-button" onclick="location.href='/community'">전체글</button>
+                                <button class="post-list-button" onclick="location.href='/community/suggested'">추천글</button>
+                            </div>
+                            
+                            <div class="category-container">
+                                <span onclick="location.href='/community/category/일반'">일반</span>
+                                <span onclick="location.href='/community/category/공지'">공지</span>
+                                <span onclick="location.href='/community/category/정보'">정보</span>
+                                <span onclick="location.href='/community/category/홍보'">홍보</span>
+                            </div>
+                            
+                            <div class="right-box">
+                                <div class="write_btnbox">
+                                    <button type="button" id="btn_write" class="btn_write" onClick="location.href='/write'" style="cursor:pointer;">글쓰기</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="content-list-wrap">
+                        <table class="content-list">
+                            <colgroup>
+                                <col style="width: 5%;">
+                                <col style="width: 10%;">
+                                <col style="width: 50%;">
+                                <col style="width: 15%;">
+                                <col style="width: 10%;">
+                                <col style="width: 10%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">말머리</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">작성일</th>
+                                    <th scope="col">조회수</th>
+                                    <th scope="col">추천수</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                {% for post in posts %}
+                                <tr>
+                                    <td class="center">{{ post.postnumber }}</td>
+                                    <td class="center">{{ post.category }}</td>
+                                    <td><a href="/post/{{ post.id }}">{{ post.title }}</a></td>
+                                    <td class="center">{{ post.postdate }}</td>
+                                    <td class="center">{{ post.views }}</td>
+                                    <td class="center">{{ post.suggest }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="listbottom_box">
+                        <div class="writebottom_box">
+                            <button type="button" id="btn_write" class="btn_write" onClick="location.href='/write'" style="cursor:pointer;">글쓰기</button>
+                        </div>
+                    </div>
+                    
+                </article>
+            </section>
+        </div>
+        <footer class="footer">
+            
+            <div id="footer-team">
+                <div>Eco Master&nbsp;&nbsp;| &nbsp; Sungkyunkwan University <br>
+                    Software Engineering&nbsp; | &nbsp;Team 8<br>
+                    <div id="icon"> <img src="/html_template/Preview.png" width="100px" height="60px"></div>
+                </div>
+                
+            </div>
+            <div id="icon-1"><img src="/html_template/earth_good.png" width="100px" height="100px"></div>       
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </body>
+</html>
+
+
+
