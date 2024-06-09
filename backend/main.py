@@ -78,7 +78,7 @@ async def receive_code(code: Code):
     memory_usage = result["memory_usage"]
 
     # 탄소 배출량 계산
-    carbon_emissions = calculate_carbon_emissions(execution_time)
+    carbon_emissions = calculate_carbon_emissions(execution_time, memory_usage)
 
     # 임시 파일 삭제
     os.remove(result["java_file_path"])
