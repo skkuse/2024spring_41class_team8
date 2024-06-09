@@ -33,6 +33,7 @@ public class Main {
             lines = new ArrayList<>(Arrays.asList(codes));
 
             // 2단계: repeatlydeclareCheck
+            
             if (repeatlydeclareCheck(codes, lines)) {
                 saveToFile(lines, fixedFilePath);
             } else {
@@ -43,6 +44,7 @@ public class Main {
             lines = new ArrayList<>(Arrays.asList(codes));
 
             // 3단계: forwhileCheck
+            
             if (forwhileCheck(codes, lines)) {
                 saveToFile(lines, fixedFilePath);
             } else {
@@ -90,7 +92,7 @@ public class Main {
         for (String[] pair : classMethodPairs) {
             boolean isDetected = false;
             int classStartIndex = -1;
-            int variableDeclarationLine = -1;
+            
             int methodCallLine = -1;
             String variableName = "";
             String className = pair[0];
@@ -112,7 +114,7 @@ public class Main {
                 Matcher classMatcher = classPattern.matcher(line);
                 if (classMatcher.find()) {
                     variableName = classMatcher.group(1);
-                    variableDeclarationLine = i;
+                   
 
                     for (int j = i; j < codes.length; j++) {
                         String line2 = codes[j];
@@ -326,8 +328,8 @@ public class Main {
             }
 
             String combinedCondition = "(" + firstCondition + " && " + secondCondition + ") && " + thirdCondition;
-            lines.set(firstStartIfIndex - 1, "\t\tif(" + combinedCondition + ") {\n");
-            lines.add(firstStartIfIndex, "\t\t\t" + conditionBody + "\t\t}\n");
+            lines.set(firstStartIfIndex , "\t\tif(" + combinedCondition + ") {\n");
+            lines.add(firstStartIfIndex + 1, "\t\t\t" + conditionBody + "\t\t}\n");
 
             lines.removeIf(item -> item.equals("##MUSTDELETE##"));
             int realSize = lines.size();
