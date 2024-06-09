@@ -19,6 +19,16 @@
     <pre id="carbonEmissions"></pre>
     <h2>Output:</h2>
     <pre id="output"></pre>
+    <h2>Fixed Code:</h2>
+    <pre id="fixedCode"></pre>
+    <h2>Fixed Execution Time (s):</h2>
+    <pre id="fixedExecutionTime"></pre>
+    <h2>Fixed Memory Usage (MB):</h2>
+    <pre id="fixedMemoryUsage"></pre>
+    <h2>Fixed Carbon Emissions (g CO2e):</h2>
+    <pre id="fixedCarbonEmissions"></pre>
+    <h2>Reduced Emissions (%):</h2>
+    <pre id="reducedEmissions"></pre>
 
     <script>
         document.getElementById('sendButton').addEventListener('click', async () => {
@@ -38,6 +48,11 @@
             document.getElementById('memoryUsage').textContent = result.memory_usage;
             document.getElementById('carbonEmissions').textContent = result.carbon_emissions;
             document.getElementById('output').textContent = result.output;
+            document.getElementById('fixedCode').textContent = result.fixed_code;
+            document.getElementById('fixedExecutionTime').textContent = result.fixed_execution_time;
+            document.getElementById('fixedMemoryUsage').textContent = result.fixed_memory_usage;
+            document.getElementById('fixedCarbonEmissions').textContent = result.fixed_carbon_emissions;
+            document.getElementById('reducedEmissions').textContent = result.reduced_emmisions;
         });
     </script>
 </body>

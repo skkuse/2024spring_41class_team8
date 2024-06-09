@@ -87,12 +87,27 @@ async def receive_code(code: Code):
     # Main_ex123.java 실행 및 Fixed.java 코드 반환
     fixed_code = fix_code(code.java_code)
 
+    result_after_fixed = compile_and_run_java_code(fixed_code)
+
+    after_excution_time = result_after_fixed["execution_time"]
+    after_memory_usage = result_after_fixed["memory_usage"]
+
+    after_carbon_emissions = calculate_carbon_emissions(after_excution_time, after_memory_usage)
+
+    reduced_emissions = after_carbon_emissions / carbon_emissions * 100
+
+    os.remove(result_after_fixed["java_file_path"])
+    os.remove(f"{result_after_fixed['class_name']}.class")
     return {
         "java_code": code.java_code,
         "execution_time": execution_time,
         "memory_usage": memory_usage ,  # Convert to MB
         "carbon_emissions": carbon_emissions,
-        "output": fixed_code
+        "output": fixed_code,
+        "fixed_execution_time": after_excution_time,
+        "fixed_memory_usage": after_memory_usage,
+        "fixed_carbon_emissions": after_carbon_emissions,
+        "reduced_emmisions": reduced_emissions
     }
 
 if __name__ == "__main__":
