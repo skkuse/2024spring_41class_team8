@@ -94,7 +94,7 @@ async def receive_code(code: Code):
 
     after_carbon_emissions = calculate_carbon_emissions(after_excution_time, after_memory_usage)
 
-    reduced_emissions = after_carbon_emissions / carbon_emissions * 100
+    reduced_emissions = (1 - after_carbon_emissions / carbon_emissions) * 100
 
     os.remove(result_after_fixed["java_file_path"])
     os.remove(f"{result_after_fixed['class_name']}.class")
