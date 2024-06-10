@@ -36,6 +36,7 @@ db = firestore.client()
 # Static files 서빙 설정
 app.mount("/static", StaticFiles(directory="../frontend"), name="static")
 app.mount("/community/static", StaticFiles(directory="../frontend/community"), name="community")
+app.mount("/quiz/static", StaticFiles(directory="../frontend/green_quiz"), name="green_quiz_static")
 
 # 템플릿 설정
 templates = Jinja2Templates(directory="../frontend/community")
@@ -50,6 +51,18 @@ def get_client_ip(request: Request) -> str:
 async def serve_homepage():
     with open(os.path.join("../frontend/community", "main_page.html"), encoding='utf-8') as f:
         return HTMLResponse(content=f.read(), status_code=200)
+    
+@app.get("/code", response_class=HTMLResponse)
+async def serve_homepage():
+    with open(os.path.join("../frontend", "code_test.html"), encoding='utf-8') as f:
+        return HTMLResponse(content=f.read(), status_code=200)
+    
+
+@app.get("/quiz", response_class=HTMLResponse)
+async def serve_quizpage():
+    with open(os.path.join("../frontend/green_quiz", "index.html"), encoding='utf-8') as f:
+        return HTMLResponse(content=f.read(), status_code=200)
+
 
 class Code(BaseModel):
     java_code: str
