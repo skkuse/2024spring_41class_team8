@@ -1,21 +1,23 @@
 const questions = [
     {
-        question: "When considering resource consumption, which coding approach is greener?",
+        question: "Which coding practice is more environmentally friendly?",
         options: {
-            A: `Performing frequent disk I/O operations without optimization.
-                \ndef read_data(file_path): 
-                \n    with open(file_path, 'r') as file: 
-                \n        data = file.read() 
-                \n    return data`,
-            B: `Minimizing disk I/O by optimizing data storage and retrieval processes.
-                \ndef read_data_optimized(file_path): 
-                \n    cached_data = read_from_cache(file_path) 
-                \n    if cached_data: 
-                \n        return cached_data 
-                \n    else: 
-                \n        data = read_data(file_path) 
-                \n        store_in_cache(file_path, data) 
-                \n        return data`
+            A: `Option A:
+<pre><code>def brute_force_search(array, target):
+    for i in range(len(array)):
+        if array[i] == target:
+            return i
+</code></pre>`,
+            B: `Option B:
+<pre><code>def read_data_optimized(file_path): 
+    cached_data = read_from_cache(file_path) 
+    if cached_data: 
+        return cached_data 
+    else: 
+        data = read_data(file_path) 
+        store_in_cache(file_path, data) 
+        return data
+</code></pre>`
         },
         answer: "B",
         reason: "Option B minimizes disk I/O operations by first checking for cached data before reading from the file, thus reducing unnecessary disk access and improving overall efficiency."
@@ -23,20 +25,22 @@ const questions = [
     {
         question: "When considering resource consumption, which coding approach is greener?",
         options: {
-            A: `Performing frequent disk I/O operations without optimization.
-                \ndef read_data(file_path): 
-                \n    with open(file_path, 'r') as file: 
-                \n        data = file.read() 
-                \n    return data`,
-            B: `Minimizing disk I/O by optimizing data storage and retrieval processes.
-                \ndef read_data_optimized(file_path): 
-                \n    cached_data = read_from_cache(file_path) 
-                \n    if cached_data: 
-                \n        return cached_data 
-                \n    else: 
-                \n        data = read_data(file_path) 
-                \n        store_in_cache(file_path, data) 
-                \n        return data`
+            A: `Option A:
+<pre><code>def read_data(file_path): 
+    with open(file_path, 'r') as file: 
+        data = file.read() 
+    return data
+</code></pre>`,
+            B: `Option B:
+<pre><code>def read_data_optimized(file_path): 
+    cached_data = read_from_cache(file_path) 
+    if cached_data: 
+        return cached_data 
+    else: 
+        data = read_data(file_path) 
+        store_in_cache(file_path, data) 
+        return data
+</code></pre>`
         },
         answer: "B",
         reason: "Option B minimizes disk I/O operations by first checking for cached data before reading from the file, thus reducing unnecessary disk access and improving overall efficiency."
@@ -44,15 +48,17 @@ const questions = [
     {
         question: "Which hardware utilization method is more environmentally sustainable?",
         options: {
-            A: `Executing tasks sequentially to ensure steady hardware usage.
-                \ndef sequential_processing(tasks): 
-                \n    for task in tasks: 
-                \n        process(task)`,
-            B: `Implementing parallel processing techniques to maximize hardware utilization and reduce idle time.
-                \nfrom concurrent.futures import ThreadPoolExecutor 
-                \ndef parallel_processing(tasks): 
-                \n    with ThreadPoolExecutor() as executor: 
-                \n        executor.map(process, tasks)`
+            A: `Option A:
+<pre><code>def sequential_processing(tasks): 
+    for task in tasks: 
+        process(task)
+</code></pre>`,
+            B: `Option B:
+<pre><code>from concurrent.futures import ThreadPoolExecutor 
+def parallel_processing(tasks): 
+    with ThreadPoolExecutor() as executor: 
+        executor.map(process, tasks)
+</code></pre>`
         },
         answer: "B",
         reason: "Option B utilizes parallel processing techniques, allowing multiple tasks to be executed simultaneously, thus maximizing hardware utilization and reducing overall execution time."
@@ -60,19 +66,20 @@ const questions = [
     {
         question: "When it comes to memory management, which coding strategy is greener?",
         options: {
-            A: `Option A: Inefficient memory management leading to excessive memory allocations.
-def allocate_memory():
+            A: `Option A:
+<pre><code>def allocate_memory():
     data = []
     for _ in range(1000000):
         data.append(' ' * 1024)
-    return data`,
-            B: `Option B: Implementing optimized memory allocation strategies to minimize memory wastage.
-import numpy as np
+    return data
+</code></pre>`,
+            B: `Option B:
+<pre><code>import numpy as np
 
 def allocate_memory_optimized():
     data = np.empty((1000000, 1024), dtype=np.uint8)
     return data
-`
+</code></pre>`
         },
         answer: "B",
         reason: "Option B allocates memory using a single, optimized array, reducing memory overhead and fragmentation compared to Option A, which allocates memory inefficiently by appending to a list."
@@ -80,22 +87,24 @@ def allocate_memory_optimized():
     {
         question: "Which network efficiency approach is more environmentally responsible?",
         options: {
-            A: `Option A: Sending redundant data over the network without compression.
-import socket
+            A: `Option A:
+<pre class="small-text"><code>import socket
 
 def send_data(data):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect(('server_ip', 12345))
-        s.sendall(data.encode())`,
-            B: `Option B: Implementing data compression and efficient transfer protocols to minimize network traffic and energy consumption.
-import zlib
+        s.sendall(data.encode())
+</code></pre>`,
+            B: `Option B:
+<pre class="small-text"><code>import zlib
 import socket
 
 def send_compressed_data(data):
     compressed_data = zlib.compress(data.encode())
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect(('server_ip', 12345))
-        s.sendall(compressed_data)`
+        s.sendall(compressed_data)
+</code></pre>`
         },
         answer: "B",
         reason: "Option B compresses data before sending it over the network, reducing the amount of data transmitted and minimizing network traffic and energy consumption."
@@ -103,15 +112,14 @@ def send_compressed_data(data):
     // Add more questions as needed
 ];
 
-
 let currentQuestionIndex = 0;
 let score = 0;
 
 function displayQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
-    document.getElementById('question').innerText = currentQuestion.question;
-    document.getElementById('optionA').innerText = currentQuestion.options.A;
-    document.getElementById('optionB').innerText = currentQuestion.options.B;
+    document.getElementById('question').innerHTML = currentQuestion.question;
+    document.getElementById('optionA').innerHTML = currentQuestion.options.A;
+    document.getElementById('optionB').innerHTML = currentQuestion.options.B;
     clearSelectionStyles();
     hideReasonAndNextButton();
     updateProgressBar();
