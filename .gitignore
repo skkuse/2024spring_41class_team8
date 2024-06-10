@@ -1,0 +1,6 @@
+# .gitignore
+
+# Firebase admin credentials
+firebase_admin.json*
+
+
