@@ -5,13 +5,13 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f4f8; /* A very light gray/blue, typical for a clean interface */
+    background-color: #e0f2f1; /* Adjusted to a pale mint green */
     padding: 20px;
     box-sizing: border-box;
 }
 
 #quiz-container {
-    background-color: #ffffff; /* Crisp white background */
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 40px;
@@ -26,21 +26,23 @@ body {
 
 #progress-bar-container {
     width: 100%;
-    background-color: #e1e5ea; /* A light gray for less visual impact */
+    background-color: #e1e5ea;
     border-radius: 5px;
     margin-bottom: 20px;
 }
 
 #progress-bar {
     height: 10px;
-    background-color: #3498db; /* A bright blue to indicate progress */
+    background-color: #008080; /* teal color */
     width: 0%;
     border-radius: 5px;
 }
 
+
+
 h1, #result-container h2, #result-container p {
     text-align: center;
-    color: #2c3e50; /* A strong but not overwhelming blue */
+    color: #2c3e50;
     font-size: 2em;
 }
 
@@ -68,7 +70,7 @@ h1, #result-container h2, #result-container p {
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.2em;
-    background-color: #dae1e7; /* Subtle light gray/blue for options */
+    background-color: #dae1e7;
     transition: background-color 0.3s;
     overflow-wrap: break-word;
     white-space: pre-wrap;
@@ -79,22 +81,32 @@ h1, #result-container h2, #result-container p {
 }
 
 .option:hover {
-    background-color: #cdd5db; /* A slightly darker shade for hover effect */
+    background-color: #cdd5db;
 }
 
 .correct, #next-button {
-    background-color: #4CAF50; /* Green to indicate correct answer or continue button */
+    background-color: #4CAF50;
     color: white;
 }
 
 .wrong {
-    background-color: #f44336; /* Red to indicate wrong answer */
+    background-color: #f44336;
     color: white;
 }
 
 #reason, #next-button {
     margin-top: 20px;
     font-size: 1.2em;
-    color: #2c3e50; /* Matching the text color with headings */
+    color: #2c3e50;
     text-align: left;
+}
+
+#next-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #91b14b; /* Green to indicate correct answer or continue button */
+    color: white;
+    cursor: pointer;
 }
