@@ -34,7 +34,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # Static files 서빙 설정
-app.mount("/static", StaticFiles(directory="../frontend"), name="static")
+app.mount("/code/static", StaticFiles(directory="../frontend/refactoring_code"), name="static")
 app.mount("/community/static", StaticFiles(directory="../frontend/community"), name="community")
 app.mount("/quiz/static", StaticFiles(directory="../frontend/green_quiz"), name="green_quiz_static")
 
@@ -54,7 +54,7 @@ async def serve_homepage():
     
 @app.get("/code", response_class=HTMLResponse)
 async def serve_homepage():
-    with open(os.path.join("../frontend", "code_test.html"), encoding='utf-8') as f:
+    with open(os.path.join("../frontend/refactoring_code", "index.html"), encoding='utf-8') as f:
         return HTMLResponse(content=f.read(), status_code=200)
     
 
@@ -100,15 +100,12 @@ async def receive_code(code: Code):
     result = compile_and_run_java_code(code.java_code)
     
     if "error" in result:
-        os.remove(result["java_file_path"])
-        if os.path.exists(f"{result['class_name']}.class"):
-            os.remove(f"{result['class_name']}.class")
-        raise HTTPException(status_code=400, detail=result["error"])
+        return JSONResponse(content={"output": result["error"]}, status_code=400)
 
     execution_time = result["execution_time"]
     memory_usage = result["memory_usage"]
 
-    carbon_emissions = calculate_carbon_emissions(execution_time, memory_usage)
+    carbon_emissions = calculate_carbon_emissions(execution_time/1000, memory_usage)
 
     os.remove(result["java_file_path"])
     os.remove(f"{result['class_name']}.class")
@@ -120,7 +117,7 @@ async def receive_code(code: Code):
     after_excution_time = result_after_fixed["execution_time"]
     after_memory_usage = result_after_fixed["memory_usage"]
 
-    after_carbon_emissions = calculate_carbon_emissions(after_excution_time, after_memory_usage)
+    after_carbon_emissions = calculate_carbon_emissions(after_excution_time/1000, after_memory_usage)
 
     reduced_emissions = (1 - after_carbon_emissions / carbon_emissions) * 100
 
@@ -131,7 +128,7 @@ async def receive_code(code: Code):
         "execution_time": execution_time,
         "memory_usage": memory_usage,
         "carbon_emissions": carbon_emissions,
-        "output": fixed_code,
+        "fixed_code": fixed_code,
         "fixed_execution_time": after_excution_time,
         "fixed_memory_usage": after_memory_usage,
         "fixed_carbon_emissions": after_carbon_emissions,

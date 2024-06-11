@@ -109,7 +109,7 @@ def send_compressed_data(data):
         answer: "B",
         reason: "Option B compresses data before sending it over the network, reducing the amount of data transmitted and minimizing network traffic and energy consumption."
     },
-    // Add more questions as needed
+
 ];
 
 let currentQuestionIndex = 0;

@@ -33,12 +33,10 @@ body {
 
 #progress-bar {
     height: 10px;
-    background-color: #008080; /* teal color */
+    background-color: #008080; /* Teal color */
     width: 0%;
     border-radius: 5px;
 }
-
-
 
 h1, #result-container h2, #result-container p {
     text-align: center;
@@ -109,4 +107,28 @@ h1, #result-container h2, #result-container p {
     background-color: #91b14b; /* Green to indicate correct answer or continue button */
     color: white;
     cursor: pointer;
+}
+
+#result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    padding: 20px; /* Add some padding for aesthetics */
+}
+
+#main-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #91b14b; /* Green to indicate main navigation button */
+    color: white;
+    cursor: pointer;
+    margin-top: 100px; /* Adjust vertical spacing as needed */
+    
+}
+
+#score {
+    margin-bottom: 20px; /* Ensure there's spacing between the score and the button */
 }

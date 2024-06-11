@@ -65,7 +65,9 @@ def compile_and_run_java_code(java_code: str):
     compile_process = subprocess.run(["javac", java_file_path], capture_output=True, text=True)
     if compile_process.returncode != 0:
         os.remove(java_file_path)
-        return {"execution_time": f"compileError : {compile_process.stderr.strip()}", "class_name": class_name, "java_file_path": java_file_path}
+        return {
+            "error": f"Compile Error: {compile_process.stderr.strip()}"
+        }
 
     # Java 코드 실행 및 실행 시간 측정
     run_process = subprocess.Popen(["java", class_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -75,7 +77,9 @@ def compile_and_run_java_code(java_code: str):
     if run_process.returncode != 0:
         os.remove(java_file_path)
         os.remove(f"{class_name}.class")
-        return {"execution_time": f"executionError : {stderr.decode().strip()}", "class_name": class_name, "java_file_path": java_file_path}
+        return {
+            "error": f"Execution Error: {stderr.decode().strip()}"
+        }
 
     execution_time = None
     memory_used = None
@@ -90,7 +94,7 @@ def compile_and_run_java_code(java_code: str):
         f.write(java_code)
 
     return {
-        "execution_time": execution_time,
+        "execution_time": execution_time*1000,
         "memory_usage": memory_used,  # MB 단위
         "stdout": stdout.decode(),
         "stderr": stderr.decode(),

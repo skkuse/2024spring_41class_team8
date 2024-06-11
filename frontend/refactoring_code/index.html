@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="./css/main.css" rel="stylesheet" />
+    <link href="code/static/css/main.css" rel="stylesheet" />
     <title>Carbon Emission Measurement Tool</title>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div style="cursor: pointer;" onclick="location.href=('index.html')"; class="logo"></div>
+            <div style="cursor: pointer;" onclick="location.href=('/')"; class="logo"></div>
             <div class="nav">
-                <a href="#main-web" class="nav-main-web-logo"></a>
+                <a href="/" class="nav-main-web-logo"></a>
                 <div class="nav-link">
                     <a href="#community-zone" class="nav-item">Community Zone</a>
                     <a href="#green-pattern-quiz" class="nav-item">Green Pattern Quiz</a>
@@ -37,24 +37,66 @@
             <h2>Carbon Emission Measurement</h2>
             <textarea id="code-input" placeholder="Enter your code here..."></textarea>
             <button id="measure-button">Measure Emission</button>
-            <h2>modifying and modified code</h2>
+            <h2>Modifying and Modified Code</h2>
             <textarea id="modifying-code" readonly></textarea>
             <textarea id="modified-code" readonly></textarea>
             <div id="result"></div>
+            <div id="tree-images"></div>
+            <table id="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Original Code</th>
+                        <th>Modified Code</th>
+                        <th>Improvement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Execution Time</td>
+                        <td id="original-execution-time"></td>
+                        <td id="modified-execution-time"></td>
+                        <td id="improvement-execution-time"></td>
+                    </tr>
+                    <tr>
+                        <td>Memory Usage</td>
+                        <td id="original-memory-usage"></td>
+                        <td id="modified-memory-usage"></td>
+                        <td id="improvement-memory-usage"></td>
+                    </tr>
+                    <tr>
+                        <td>Carbon Emissions</td>
+                        <td id="original-carbon-emissions"></td>
+                        <td id="modified-carbon-emissions"></td>
+                        <td id="improvement-carbon-emissions"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="section" id="community-zone">
             <h2>Community Zone</h2>
             <p>Join our community to discuss and share ideas on reducing carbon emissions from software development.</p>
-            <a href="#community" class="cta-button">Go to Community Zone</a>
+            <a href="/community" class="cta-button">Go to Community Zone</a>
         </div>
         <div class="section" id="green-pattern-quiz">
             <h2>Green Pattern Quiz</h2>
             <p>Test your knowledge about green coding practices with our fun quiz.</p>
-            <a href="#quiz" class="cta-button">Take the Quiz</a>
+            <a href="/quiz" class="cta-button">Take the Quiz</a>
         </div>
-        <div class="footer">
-            <p>&copy; 2024 Carbon Emission Measurement Tool. All rights reserved.</p>
-        </div>
+        <footer class="footer">
+            <div id="footer-team">
+                <div>Eco Master&nbsp;&nbsp;| &nbsp; Sungkyunkwan University <br>
+                    Software Engineering&nbsp; | &nbsp;Team 8<br>
+                    <div id="icon"> 
+                        <img src="/code/static/images/Preview.png" width="100px" height="60px">
+                    </div>
+                </div>
+            </div>
+            <div id="icon-1">
+                <img src="/code/static/images/earth_good.png" width="100px" height="100px">
+            </div>       
+        </footer>
     </div>
+    <script src="code/static/js/main.js"></script>
 </body>
 </html>
