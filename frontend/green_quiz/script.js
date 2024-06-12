@@ -9,18 +9,15 @@ const questions = [
             return i
 </code></pre>`,
             B: `Option B:
-<pre><code>def read_data_optimized(file_path): 
-    cached_data = read_from_cache(file_path) 
-    if cached_data: 
-        return cached_data 
-    else: 
-        data = read_data(file_path) 
-        store_in_cache(file_path, data) 
-        return data
+<pre><code>def brute_force_search(array, target):
+    lenofArray = len(array)
+    for i in range(lenofArray):
+        if array[i] == target:
+            return i
 </code></pre>`
         },
         answer: "B",
-        reason: "Option B minimizes disk I/O operations by first checking for cached data before reading from the file, thus reducing unnecessary disk access and improving overall efficiency."
+        reason: "Option B is better because it avoids multiple calls to len(array) by storing the length in a variable, making the loop more efficient."
     },
     {
         question: "When considering resource consumption, which coding approach is greener?",
