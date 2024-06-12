@@ -135,14 +135,12 @@ function hideReasonAndNextButton() {
 function selectOption(option) {
     const currentQuestion = questions[currentQuestionIndex];
     const selectedButton = document.getElementById(`option${option}`);
-    const correctButton = document.getElementById(`option${currentQuestion.answer}`);
 
     if (option === currentQuestion.answer) {
         selectedButton.classList.add('correct');
         score++;
     } else {
         selectedButton.classList.add('wrong');
-        correctButton.classList.add('correct');
     }
 
     showReasonAndNextButton(currentQuestion.reason);
