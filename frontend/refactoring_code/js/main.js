@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const codeInput = CodeMirror.fromTextArea(document.getElementById('code-input'), {
         lineNumbers: true,
         mode: 'text/x-java',
-        
+        placeholder: "Enter your JAVA code here...",
+        theme: 'material',
         matchBrackets: true,
         autoCloseBrackets: true
     });
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modifyingCode = CodeMirror.fromTextArea(document.getElementById('modifying-code'), {
         lineNumbers: true,
         mode: 'text/x-java',
-        
+        theme: 'material',
         readOnly: true,
         matchBrackets: true,
         autoCloseBrackets: true
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modifiedCode = CodeMirror.fromTextArea(document.getElementById('modified-code'), {
         lineNumbers: true,
         mode: 'text/x-java',
-        
+        theme: 'material',
         readOnly: true,
         matchBrackets: true,
         autoCloseBrackets: true
@@ -121,8 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modified-memory-usage').textContent = `${data.modifiedMemoryUsage} MB`;
         document.getElementById('improvement-memory-usage').textContent = `${((data.originalMemoryUsage - data.modifiedMemoryUsage) / data.originalMemoryUsage * 100).toFixed(2)} %`;
 
-        document.getElementById('original-carbon-emissions').textContent = `${data.originalCarbonEmissions} g CO2`;
-        document.getElementById('modified-carbon-emissions').textContent = `${data.modifiedCarbonEmissions} g CO2`;
+        document.getElementById('original-carbon-emissions').textContent = `${data.originalCarbonEmissions} mg CO2`;
+        document.getElementById('modified-carbon-emissions').textContent = `${data.modifiedCarbonEmissions} mg CO2`;
         document.getElementById('improvement-carbon-emissions').textContent = `${((data.originalCarbonEmissions - data.modifiedCarbonEmissions) / data.originalCarbonEmissions * 100).toFixed(2)} %`;
     }
 });

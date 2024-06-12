@@ -224,9 +224,14 @@ body {
   margin-top: 20px;
 }
 
-#code-input {
+.CodeMirror * {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+}
+
+#code-input ~ .CodeMirror{
   width: 100%;
-  height: 200px;
+  height: 500px;
   padding: 10px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
@@ -237,7 +242,7 @@ body {
 
 #modifying-code ~ .CodeMirror, #modified-code ~ .CodeMirror { 
   width: 100%; 
-  height: 250px; 
+  height: 500px; 
   padding: 10px; 
   font-family: 'Courier New', Courier, monospace; 
   font-size: 16px; 

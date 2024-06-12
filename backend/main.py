@@ -132,11 +132,11 @@ async def receive_code(code: Code):
         "java_code": code.java_code,
         "execution_time": execution_time,
         "memory_usage": memory_usage,
-        "carbon_emissions": carbon_emissions,
+        "carbon_emissions": carbon_emissions*1000,
         "fixed_code": fixed_code,
         "fixed_execution_time": after_excution_time,
         "fixed_memory_usage": after_memory_usage,
-        "fixed_carbon_emissions": after_carbon_emissions,
+        "fixed_carbon_emissions": after_carbon_emissions*1000,
         "reduced_emmisions": reduced_emissions
     }
 
