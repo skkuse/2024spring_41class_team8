@@ -27,7 +27,7 @@ app.add_middleware(
 )
 
 # Firebase 인증 정보 설정
-cred = credentials.Certificate("firebase_admin.json")
+cred = credentials.Certificate("/app/backend/firebase_admin.json")
 firebase_admin.initialize_app(cred)
 
 # Firestore 클라이언트 생성
