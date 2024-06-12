@@ -49,7 +49,7 @@ def get_client_ip(request: Request) -> str:
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_homepage():
-    with open(os.path.join("../frontend/community", "main_page.html"), encoding='utf-8') as f:
+    with open(os.path.join("../frontend/refactoring_code", "index.html"), encoding='utf-8') as f:
         return HTMLResponse(content=f.read(), status_code=200)
     
 @app.get("/code", response_class=HTMLResponse)
