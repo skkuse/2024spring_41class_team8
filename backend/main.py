@@ -100,8 +100,13 @@ async def receive_code(code: Code):
     result = compile_and_run_java_code(code.java_code)
     
     if "error" in result:
-        return JSONResponse(content={"output": result["error"]}, status_code=400)
-
+        return JSONResponse(
+            content={
+                "fixed_code": result["error"],
+                "error_code": -1
+            },
+            status_code=400
+       )
     execution_time = result["execution_time"]
     memory_usage = result["memory_usage"]
 

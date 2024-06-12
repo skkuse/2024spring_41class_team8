@@ -1,10 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
     const measureButton = document.getElementById('measure-button');
-    const resultDiv = document.getElementById('result');
     const treeImagesDiv = document.getElementById('tree-images');
+    const errorMessageDiv = document.getElementById('error-message');
+
+    // CodeMirror 인스턴스 초기화
+    const codeInput = CodeMirror.fromTextArea(document.getElementById('code-input'), {
+        lineNumbers: true,
+        mode: 'text/x-java',
+        
+        matchBrackets: true,
+        autoCloseBrackets: true
+    });
+
+    const modifyingCode = CodeMirror.fromTextArea(document.getElementById('modifying-code'), {
+        lineNumbers: true,
+        mode: 'text/x-java',
+        
+        readOnly: true,
+        matchBrackets: true,
+        autoCloseBrackets: true
+    });
+
+    const modifiedCode = CodeMirror.fromTextArea(document.getElementById('modified-code'), {
+        lineNumbers: true,
+        mode: 'text/x-java',
+        
+        readOnly: true,
+        matchBrackets: true,
+        autoCloseBrackets: true
+    });
 
     measureButton.addEventListener('click', async () => {
-        const javaCode = document.getElementById('code-input').value;
+        const javaCode = codeInput.getValue();
         
         const response = await fetch('/submit', {
             method: 'POST',
@@ -15,42 +42,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const result = await response.json();
-        //document.getElementById('receivedCode').textContent = result.java_code;
-        //document.getElementById('output').textContent = result.output;
-        document.getElementById('modifying-code').value = javaCode;
-        document.getElementById('modified-code').value = result.fixed_code;
-        const originalExecutionTime = result.execution_time;
-        const modifiedExecutionTime = result.fixed_execution_time;
-        const originalMemoryUsage = result.memory_usage;
-        const modifiedMemoryUsage = result.fixed_memory_usage;
-        const originalCarbonEmissions = result.carbon_emissions;
-        const modifiedCarbonEmissions = result.fixed_carbon_emissions;
 
-        // Update the comparison table
-        updateComparisonTable({
-            originalExecutionTime,
-            modifiedExecutionTime,
-            originalMemoryUsage,
-            modifiedMemoryUsage,
-            originalCarbonEmissions,
-            modifiedCarbonEmissions
-        });
+        if (result.error_code) {
+            // error_code가 있으면 오류 메시지를 표시
+            errorMessageDiv.textContent = "Please enter valid code. Check the Modified Code Section.";
+            errorMessageDiv.style.display = 'block';
+            modifiedCode.setValue(result.fixed_code);
+            return;
+        } else {
+            // error_code가 없으면 오류 메시지를 숨김
+            errorMessageDiv.style.display = 'none';
+            modifiedCode.setValue(result.fixed_code);
+            modifyingCode.setValue(javaCode);
+            const originalExecutionTime = result.execution_time;
+            const modifiedExecutionTime = result.fixed_execution_time;
+            const originalMemoryUsage = result.memory_usage;
+            const modifiedMemoryUsage = result.fixed_memory_usage;
+            const originalCarbonEmissions = result.carbon_emissions;
+             modifiedCarbonEmissions = result.fixed_carbon_emissions;
+
+            // Update the comparison table
+            updateComparisonTable({
+                originalExecutionTime,
+                modifiedExecutionTime,
+                originalMemoryUsage,
+                modifiedMemoryUsage,
+                originalCarbonEmissions,
+                modifiedCarbonEmissions
+            });
+        }
+
+    
+        
+
+
+        
 
         // Placeholder for actual carbon emission calculation logic
         // For this example, let's assume we calculate emissions based on the length of the code
-        const emission = calculateCarbonEmission(codeInput);
+        /*const emission = result.carbon_emissions;
         // Display the result
         resultDiv.textContent = `Carbon Emission: ${emission.toFixed(2)} g CO2`;
         // Update tree images based on the emission value
-        updateTreeImages(emission);
+        updateTreeImages(emission);*/
 
     });
 
-    function calculateCarbonEmission(code) {
-        // Simple placeholder calculation (to be replaced with actual logic)
-
-        return 3;
-    }
 
     function updateTreeImages(emission) {
         treeImagesDiv.innerHTML = ''; // Clear previous images

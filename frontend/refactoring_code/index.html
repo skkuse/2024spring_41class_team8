@@ -3,6 +3,10 @@
 <head>
     <link href="code/static/css/main.css" rel="stylesheet" />
     <title>Carbon Emission Measurement Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -37,9 +41,17 @@
             <h2>Carbon Emission Measurement</h2>
             <textarea id="code-input" placeholder="Enter your code here..."></textarea>
             <button id="measure-button">Measure Emission</button>
-            <h2>Modifying and Modified Code</h2>
-            <textarea id="modifying-code" readonly></textarea>
-            <textarea id="modified-code" readonly></textarea>
+            <div id="error-message" style="color: red; display: none; margin-top: 10px; font-size: 15px;"></div>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <h2>Modifying Code</h2>
+                    <textarea id="modifying-code" readonly></textarea>
+                </div>
+                <div class="flex-item">
+                    <h2>Modified Code</h2>
+                    <textarea id="modified-code" readonly></textarea>
+                </div>
+            </div>
             <div id="result"></div>
             <div id="tree-images"></div>
             <table id="comparison-table">
